@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <arukoh.demo.CardRecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></arukoh.demo.CardRecyclerView>
+    tools:context=".empty.EmptyActivity">
 
 </android.support.constraint.ConstraintLayout>
