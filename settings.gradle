@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':vision_library', ':vision_core_library'

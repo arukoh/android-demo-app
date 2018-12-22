@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import arukoh.demo.camera.PreviewActivity;
 import arukoh.demo.empty.EmptyActivity;
 
 public class CardRecyclerView extends RecyclerView {
@@ -16,7 +17,10 @@ public class CardRecyclerView extends RecyclerView {
         LinearLayoutManager llm = new LinearLayoutManager(context);
         setLayoutManager(llm);
 
-        Class[] classArray = { EmptyActivity.class };
+        Class[] classArray = {
+                EmptyActivity.class,
+                PreviewActivity.class,
+        };
         setAdapter(new CardRecyclerAdapter(context, classArray));
     }
 }
