@@ -1,4 +1,4 @@
-package arukoh.demo.camera;
+package arukoh.demo.camera.preview;
 
 import android.content.Context;
 import android.graphics.Canvas;

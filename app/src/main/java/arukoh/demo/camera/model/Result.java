@@ -5,7 +5,7 @@ import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-public class Detection extends RealmObject {
+public class Result extends RealmObject {
 
     @PrimaryKey
     private String id;

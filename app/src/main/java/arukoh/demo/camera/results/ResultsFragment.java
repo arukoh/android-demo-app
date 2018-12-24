@@ -1,4 +1,4 @@
-package arukoh.demo.camera.controller;
+package arukoh.demo.camera.results;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,15 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import arukoh.demo.R;
-import arukoh.demo.camera.model.Detection;
+import arukoh.demo.camera.model.Result;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
-public class DetectionListFragment extends Fragment {
+public class ResultsFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private DetectionAdapter mAdapter;
+    private ResultsAdapter mAdapter;
     private Realm realm;
+
+    public static ResultsFragment newInstance() {
+        ResultsFragment fragment = new ResultsFragment();
+        // Bundle args = new Bundle();
+        // fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,8 +34,11 @@ public class DetectionListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detection_list, container, false);
 
         realm = Realm.getDefaultInstance();
-        final RealmResults<Detection> result = realm.where(Detection.class).findAll();
-        mAdapter = new DetectionAdapter(result);
+        final RealmResults<Result> result = realm
+                .where(Result.class)
+                .sort("timestamp", Sort.DESCENDING)
+                .findAll();
+        mAdapter = new ResultsAdapter(result);
 
         mRecyclerView = view.findViewById(R.id.recyclerViewDetectionList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

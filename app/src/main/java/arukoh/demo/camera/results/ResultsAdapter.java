@@ -1,4 +1,4 @@
-package arukoh.demo.camera.controller;
+package arukoh.demo.camera.results;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,15 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import arukoh.demo.R;
-import arukoh.demo.camera.model.Detection;
+import arukoh.demo.camera.model.Result;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
-class DetectionAdapter extends RealmRecyclerViewAdapter<Detection, DetectionAdapter.DetectionViewHolder> {
-    private OrderedRealmCollection<Detection> objects;
+class ResultsAdapter extends RealmRecyclerViewAdapter<Result, ResultsAdapter.DetectionViewHolder> {
+    private OrderedRealmCollection<Result> objects;
 
-    public DetectionAdapter(@Nullable OrderedRealmCollection<Detection> data) {
+    public ResultsAdapter(@Nullable OrderedRealmCollection<Result> data) {
         super(data, true);
         this.objects = data;
         setHasStableIds(true);
@@ -31,10 +34,10 @@ class DetectionAdapter extends RealmRecyclerViewAdapter<Detection, DetectionAdap
 
     @Override
     public void onBindViewHolder(@NonNull DetectionViewHolder holder, int position) {
-        final Detection obj = getItem(position);
+        final Result obj = getItem(position);
         //noinspection ConstantConditions
-        holder.timestamp.setText(obj.getTimestamp().toString());
-        holder.score.setText(obj.getScore());
+        holder.timestamp.setText(toISO8601(obj.getTimestamp()));
+        holder.score.setText(String.valueOf(obj.getScore()));
     }
 
     @Override
@@ -51,5 +54,10 @@ class DetectionAdapter extends RealmRecyclerViewAdapter<Detection, DetectionAdap
             timestamp = view.findViewById(R.id.textViewTimestamp);
             score = view.findViewById(R.id.textViewScore);
         }
+    }
+
+    private String toISO8601(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        return sdf.format(date);
     }
 }
