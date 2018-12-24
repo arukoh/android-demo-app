@@ -3,6 +3,7 @@
     package="arukoh.demo">
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -25,15 +26,13 @@
             android:name=".empty.EmptyActivity"
             android:label="Empty"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".camera.PreviewActivity"
             android:label="Preview"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -135,7 +135,7 @@ public class Detector {
             mFaceDetector = new FaceDetector.Builder(context)
                     .setClassificationType(FaceDetector.NO_CLASSIFICATIONS)
                     .setProminentFaceOnly(true)
-                    .setTrackingEnabled(true)
+                    .setTrackingEnabled(false)
                     .build();
             init();
         }

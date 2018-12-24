@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,20 @@ public class PreviewActivity extends AppCompatActivity implements Detector.Callb
 
     private Detector mDetector;
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        this.finish();
+                        return true;
+                    case R.id.navigation_preview:
+                        return true;
+                    case R.id.navigation_results:
+                        return true;
+                }
+                return false;
+            };
+
     private static final int RC_HANDLE_CAMERA_PERM = 2;
 
     @Override
@@ -48,12 +63,10 @@ public class PreviewActivity extends AppCompatActivity implements Detector.Callb
         mProgressBarReady = findViewById(R.id.progressBarReady);
         mButtonStartDetection = findViewById(R.id.buttonStartDetection);
         mButtonStartDetection.setClickable(false);
-        mButtonStartDetection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDetector.start();
-            }
-        });
+        mButtonStartDetection.setOnClickListener(view -> mDetector.start());
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(R.id.navigation_preview);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         int rc = ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         if (rc == PackageManager.PERMISSION_GRANTED) {

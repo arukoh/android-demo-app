@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textViewTimestampLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DATE : "/>
+
+    <TextView
+        android:id="@+id/textViewTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewTimestampLabel"
+        android:layout_toEndOf="@+id/textViewTimestampLabel"/>
+
+    <TextView
+        android:id="@+id/textViewScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewTimestampLabel"
+        android:layout_below="@+id/textViewTimestampLabel"
+        android:layout_marginTop="10dp"
+        android:text="SCORE : "/>
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewScoreLabel"
+        android:layout_toEndOf="@+id/textViewScoreLabel"/>
+
+</RelativeLayout>
